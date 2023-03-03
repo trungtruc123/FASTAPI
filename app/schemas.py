@@ -22,7 +22,6 @@ class PostBase(BaseModel):
     title: str
     context: str
     published: bool = True
-    # owner_id: int
 
 
 class PostCreate(PostBase):
@@ -36,6 +35,7 @@ class PostUpdate(PostBase):
 class Post(PostBase):
     id: int
     create_at: datetime
+    owner_id: int
     owner: UserShow
 
     class Config:
@@ -65,3 +65,8 @@ class TokenData(BaseModel):
 class Vote(BaseModel):
     post_id: int
     dir: conint(le=1)
+
+
+class PostOut(BaseModel):
+    Post: Post
+    number_votes: int
