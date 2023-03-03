@@ -4,7 +4,7 @@ Schemas to communication with frontend (request, response)
 - inspect data, types that send to server
 
 """
-from pydantic import BaseModel, EmailStr
+from pydantic import BaseModel, EmailStr, conint
 from datetime import datetime
 from typing import Optional
 
@@ -22,7 +22,6 @@ class PostBase(BaseModel):
     title: str
     context: str
     published: bool = True
-    # owner_id: int
 
 
 class PostCreate(PostBase):
@@ -36,6 +35,7 @@ class PostUpdate(PostBase):
 class Post(PostBase):
     id: int
     create_at: datetime
+    owner_id: int
     owner: UserShow
 
     class Config:
@@ -60,3 +60,13 @@ class Token(BaseModel):
 
 class TokenData(BaseModel):
     id: Optional[str] = None
+
+
+class Vote(BaseModel):
+    post_id: int
+    dir: conint(le=1)
+
+
+class PostOut(BaseModel):
+    Post: Post
+    number_votes: int
