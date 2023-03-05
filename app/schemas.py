@@ -70,3 +70,6 @@ class Vote(BaseModel):
 class PostOut(BaseModel):
     Post: Post
     number_votes: int
+
+    class Config:
+        orm_mode = True
