@@ -20,7 +20,7 @@ Mako==1.2.4
 MarkupSafe==2.1.2
 orjson==3.8.5
 passlib==1.7.4
-psycopg2 @ file:///croot/psycopg2_1666817453215/work
+psycopg2==2.9.3
 pyasn1==0.4.8
 pycparser==2.21
 pydantic==1.10.4
