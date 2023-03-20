@@ -1,5 +1,5 @@
 #FROM ubuntu:21.10
-FROM python:3.9.7
+FROM python:3.9
 
 # Install some basic utilities
 #RUN apt-get update && apt-get install -y \
@@ -12,12 +12,14 @@ FROM python:3.9.7
 # && rm -rf /var/lib/apt/lists/*
 
 # Create a working directory
-RUN mkdir /app
-WORKDIR /app
+#RUN mkdir /app
+WORKDIR /usr/src/app
 
 COPY requirements.txt ./
 RUN pip install --no-cache-dir -r requirements.txt
 RUN echo "Done"
 COPY . .
 
+#ENV http_proxy 127.0.0.1:5432
+#ENV http_proxy 127.0.0.1:5432
 CMD ["uvicorn", "app.main:app", "--host", "0.0.0.0", "--port", "8000"]
