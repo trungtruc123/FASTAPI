@@ -1,0 +1,11 @@
+name: Deploy Fastapi
+on: [ push, pull_request ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Pull git repo
+      - uses: actions/checkout@v3
+      - name: Hello Trung Truc
+      - run: echo " Hello Trung Truc"
